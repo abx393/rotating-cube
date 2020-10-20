@@ -66,12 +66,13 @@ function drawInnerBottomLines(ctx, bottomInnerX, bottomInnerY) {
 }
 
 // Draw vertical inner lines
-function drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomInnerY) {
-    for (let i = 0; i < 8; i++) {
+function drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomInnerY, indices) {
+    for (let i = 0; i < indices.length; i++) {
+        var index = indices[i];
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(topInnerX[i], topInnerY[i]);
-        ctx.lineTo(bottomInnerX[i], bottomInnerY[i]);
+        ctx.moveTo(topInnerX[index], topInnerY[index]);
+        ctx.lineTo(bottomInnerX[index], bottomInnerY[index]);
         ctx.stroke();
     }
 }

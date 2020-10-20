@@ -46,7 +46,7 @@ function drawTransparentCube() {
     
     drawInnerTopLines(ctx, topInnerX, topInnerY);
     drawInnerBottomLines(ctx, bottomInnerX, bottomInnerY);
-    drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomInnerY);
+    drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomInnerY, [0, 1, 2, 3, 4, 5, 6, 7]);
     drawInnerHorizontalLines(ctx, midInnerX, midInnerY);
 
     // Draw all 8 edges of the cube with a solid black line
@@ -111,19 +111,8 @@ function drawSolvedRubiksCube() {
     
     drawVerticalEdges(ctx, topX, topY, bottomX, bottomY, transparent, currIndex);
 
-    //drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomInnerY, transparent, currIndex);
-    
-    // Draw vertical inner lines
-    ctx.beginPath();
-    ctx.moveTo(topInnerX[currIndex * 2], topInnerY[currIndex * 2]);
-    ctx.lineTo(bottomInnerX[currIndex * 2], bottomInnerY[currIndex * 2]);
-    ctx.moveTo(topInnerX[currIndex * 2 + 1], topInnerY[currIndex * 2 + 1]);
-    ctx.lineTo(bottomInnerX[currIndex * 2 + 1], bottomInnerY[currIndex * 2 + 1]);
-    ctx.moveTo(topInnerX[prevIndex * 2], topInnerY[prevIndex * 2]);
-    ctx.lineTo(bottomInnerX[prevIndex * 2], bottomInnerY[prevIndex * 2]);
-    ctx.moveTo(topInnerX[prevIndex * 2 + 1], topInnerY[prevIndex * 2 + 1]);
-    ctx.lineTo(bottomInnerX[prevIndex * 2 + 1], bottomInnerY[prevIndex * 2 + 1]);
-    ctx.stroke();
+    var indices = [prevIndex * 2, prevIndex * 2 + 1, currIndex * 2, currIndex * 2 + 1];
+    drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomInnerY, indices);
 
     // Draw horizontal inner lines
     ctx.beginPath();
