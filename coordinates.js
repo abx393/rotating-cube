@@ -2,7 +2,7 @@
 function cornerCoordinates(width, height) {
     var horizontalScale = width / 2;
     var verticalScale = height / 5;
-    var verticalOffset = 4 * height / 5;
+    var verticalOffset = verticalScale;
     var topX = [];
     var topY = [];
     
@@ -12,11 +12,12 @@ function cornerCoordinates(width, height) {
     
     // Compute (x, y) coordinates of four corners of top layer and bottom layer
     for (let i = 0; i < 4; i++) {
+        topX[i] = - horizontalScale * Math.sin(2 * Math.PI * (time / period + i / 4)) + horizontalScale; 
+        topY[i] = verticalScale * Math.cos(2 * Math.PI * (time / period + i / 4)) + verticalOffset;
+        
         bottomX[i] = - horizontalScale * Math.sin(2 * Math.PI * (time / period + i / 4)) + horizontalScale; 
         bottomY[i] = verticalScale * Math.cos(2 * Math.PI * (time / period + i / 4)) + (height - verticalOffset);
         
-        topX[i] = - horizontalScale * Math.sin(2 * Math.PI * (time / period + i / 4)) + horizontalScale; 
-        topY[i] = verticalScale * Math.cos(2 * Math.PI * (time / period + i / 4)) + verticalOffset;
     }
     
     var coords = [];
