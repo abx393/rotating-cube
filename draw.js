@@ -24,46 +24,13 @@ function fillBottom(ctx, bottomX, bottomY, fillColor) {
     ctx.fill();
 }
 
-// Trace and fill left face of cube
-function fillLeft(ctx, topX, topY, bottomX, bottomY, fillColor) {
+// Trace and fill front, left, right, or back face of cube
+function fillSide(ctx, from, to, topX, topY, bottomX, bottomY, fillColor) {
     ctx.beginPath();
-    ctx.moveTo(topX[0], topY[0]);
-    ctx.lineTo(topX[1], topY[1]);
-    ctx.lineTo(bottomX[1], bottomY[1]);
-    ctx.lineTo(bottomX[0], bottomY[0]);
-    ctx.fillStyle = fillColor;
-    ctx.fill();
-}
-
-// Trace and fill right face of cube
-function fillRight(ctx, topX, topY, bottomX, bottomY, fillColor) {
-    ctx.beginPath();
-    ctx.moveTo(topX[2], topY[2]);
-    ctx.lineTo(topX[3], topY[3]);
-    ctx.lineTo(bottomX[3], bottomY[3]);
-    ctx.lineTo(bottomX[2], bottomY[2]);
-    ctx.fillStyle = fillColor;
-    ctx.fill();
-}
-
-// Trace and fill front face of cube
-function fillFront(ctx, topX, topY, bottomX, bottomY, fillColor) {
-    ctx.beginPath();
-    ctx.moveTo(topX[1], topY[1]);
-    ctx.lineTo(topX[2], topY[2]);
-    ctx.lineTo(bottomX[2], bottomY[2]);
-    ctx.lineTo(bottomX[1], bottomY[1]);
-    ctx.fillStyle = fillColor;
-    ctx.fill();
-}
-
-// Trace and fill back face of cube
-function fillBack(ctx, topX, topY, bottomX, bottomY, fillColor) {
-    ctx.beginPath();
-    ctx.moveTo(topX[3], topY[3]);
-    ctx.lineTo(topX[0], topY[0]);
-    ctx.lineTo(bottomX[0], bottomY[0]);
-    ctx.lineTo(bottomX[3], bottomY[3]);
+    ctx.moveTo(topX[from], topY[from]);
+    ctx.lineTo(topX[to], topY[to]);
+    ctx.lineTo(bottomX[to], bottomY[to]);
+    ctx.lineTo(bottomX[from], bottomY[from]);
     ctx.fillStyle = fillColor;
     ctx.fill();
 }
@@ -124,29 +91,22 @@ function drawInnerHorizontalLines(ctx, midInnerX, midInnerY) {
     ctx.stroke();
 }
 
-// Draw vertical edges
-function drawVerticalEdges(ctx, topX, topY, bottomX, bottomY) {
+// Draw edges
+function drawEdges(ctx, topX, topY, bottomX, bottomY) {
     for (let i = 0; i < 4; i++) {
+        // Draw vertical edge
         ctx.beginPath();
         ctx.moveTo(topX[i], topY[i]);
         ctx.lineTo(bottomX[i], bottomY[i]);
         ctx.stroke();
-    }
-}
-
-// Draw the top face's edges
-function drawTopEdges(ctx, topX, topY) {
-    for (let i = 0; i < 4; i++) {
+        
+        // Draw top edge
         ctx.beginPath();
         ctx.moveTo(topX[i], topY[i]);
         ctx.lineTo(topX[(i + 1) % 4], topY[(i + 1) % 4]);
         ctx.stroke();
-    }
-}
-
-// Draw the bottom face's edges
-function drawBottomEdges(ctx, bottomX, bottomY) {
-    for (let i = 0; i < 4; i++) {
+        
+        // Draw bottom edge
         ctx.beginPath();
         ctx.moveTo(bottomX[i], bottomY[i]);
         ctx.lineTo(bottomX[(i + 1) % 4], bottomY[(i + 1) % 4]);

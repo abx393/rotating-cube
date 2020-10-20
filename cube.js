@@ -37,14 +37,12 @@ function drawTransparentCube() {
     var bottomInnerX = innerCoords[4];
     var bottomInnerY = innerCoords[5];
 
-    // Fill all faces of the cube with same color
+    // Fill front, left, back, and side faces of the cube with same color
     const fillColor = "#8a3b2c";
-    fillBottom(ctx, bottomX, bottomY, fillColor);
-    fillTop(ctx, topX, topY, fillColor);
-    fillLeft(ctx, topX, topY, bottomX, bottomY, fillColor);
-    fillRight(ctx, topX, topY, bottomX, bottomY, fillColor);
-    fillFront(ctx, topX, topY, bottomX, bottomY, fillColor);
-    fillBack(ctx, topX, topY, bottomX, bottomY, fillColor);
+    for (let i = 0; i < 4; i++) {
+        var j = (i + 1) % 4;
+        fillSide(ctx, i, j, topX, topY, bottomX, bottomY, fillColor);
+    }
     
     drawInnerTopLines(ctx, topInnerX, topInnerY);
     drawInnerBottomLines(ctx, bottomInnerX, bottomInnerY);
@@ -52,9 +50,7 @@ function drawTransparentCube() {
     drawInnerHorizontalLines(ctx, midInnerX, midInnerY);
 
     // Draw all 8 edges of the cube with a solid black line
-    drawVerticalEdges(ctx, topX, topY, bottomX, bottomY);
-    drawTopEdges(ctx, topX, topY);
-    drawBottomEdges(ctx, bottomX, bottomY);
+    drawEdges(ctx, topX, topY, bottomX, bottomY);
     
     time += interval;
 }
@@ -93,36 +89,21 @@ function drawSolvedRubiksCube() {
     var quad = Math.ceil(
         (timeModified / period - Math.floor(timeModified / period)) * 4
     );
-    var curr = mod(4 - quad, 4);
+    var currIndex = mod(4 - quad, 4);
 
     var colors = ["#11FF34", "#EEEEEE", "#0034FF", "#FFFF00"];
 
-    var prev = mod(curr - 1, 4);
-    var next = mod(curr + 1, 4);
+    var prevIndex = mod(currIndex - 1, 4);
+    var nextIndex = mod(currIndex + 1, 4);
 
-    ctx.beginPath();
-    ctx.moveTo(topX[curr], topY[curr]);
-    ctx.lineTo(topX[prev], topY[prev]);
-    ctx.lineTo(bottomX[prev], bottomY[prev]);
-    ctx.lineTo(bottomX[curr], bottomY[curr]);
-    ctx.lineTo(topX[curr], topY[curr]);
-    ctx.fillStyle = colors[curr];
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.moveTo(topX[curr], topY[curr]);
-    ctx.lineTo(topX[next], topY[next]);
-    ctx.lineTo(bottomX[next], bottomY[next]);
-    ctx.lineTo(bottomX[curr], bottomY[curr]);
-    ctx.lineTo(topX[curr], topY[curr]);
-    ctx.fillStyle = colors[next];
-    ctx.fill();
+    fillSide(ctx, currIndex, prevIndex, topX, topY, bottomX, bottomY, colors[currIndex]);
+    fillSide(ctx, currIndex, nextIndex, topX, topY, bottomX, bottomY, colors[nextIndex]);
 
     // Draw edges of bottom layer of cube (line segments connecting top four corner points)
     ctx.beginPath();
-    ctx.moveTo(bottomX[prev], bottomY[prev]);
-    ctx.lineTo(bottomX[curr], bottomY[curr]);
-    ctx.lineTo(bottomX[next], bottomY[next]);
+    ctx.moveTo(bottomX[prevIndex], bottomY[prevIndex]);
+    ctx.lineTo(bottomX[currIndex], bottomY[currIndex]);
+    ctx.lineTo(bottomX[nextIndex], bottomY[nextIndex]);
     ctx.stroke();
 
     // Draw edges of top layer of cube (line segments connecting top four corner points)
@@ -138,7 +119,7 @@ function drawSolvedRubiksCube() {
 
     // Draw vertical edges
     for (let i = 0; i < 4; i++) {
-        if (i != curr && i != prev && i != next) {
+        if (i != currIndex && i != prevIndex && i != nextIndex) {
             continue;
         }
         ctx.beginPath();
@@ -150,22 +131,22 @@ function drawSolvedRubiksCube() {
     // Draw vertical inner lines
     ctx.lineWidth = 3;
     ctx.beginPath();
-    ctx.moveTo(topInnerX[curr * 2], topInnerY[curr * 2]);
-    ctx.lineTo(bottomInnerX[curr * 2], bottomInnerY[curr * 2]);
-    ctx.moveTo(topInnerX[curr * 2 + 1], topInnerY[curr * 2 + 1]);
-    ctx.lineTo(bottomInnerX[curr * 2 + 1], bottomInnerY[curr * 2 + 1]);
-    ctx.moveTo(topInnerX[prev * 2], topInnerY[prev * 2]);
-    ctx.lineTo(bottomInnerX[prev * 2], bottomInnerY[prev * 2]);
-    ctx.moveTo(topInnerX[prev * 2 + 1], topInnerY[prev * 2 + 1]);
-    ctx.lineTo(bottomInnerX[prev * 2 + 1], bottomInnerY[prev * 2 + 1]);
+    ctx.moveTo(topInnerX[currIndex * 2], topInnerY[currIndex * 2]);
+    ctx.lineTo(bottomInnerX[currIndex * 2], bottomInnerY[currIndex * 2]);
+    ctx.moveTo(topInnerX[currIndex * 2 + 1], topInnerY[currIndex * 2 + 1]);
+    ctx.lineTo(bottomInnerX[currIndex * 2 + 1], bottomInnerY[currIndex * 2 + 1]);
+    ctx.moveTo(topInnerX[prevIndex * 2], topInnerY[prevIndex * 2]);
+    ctx.lineTo(bottomInnerX[prevIndex * 2], bottomInnerY[prevIndex * 2]);
+    ctx.moveTo(topInnerX[prevIndex * 2 + 1], topInnerY[prevIndex * 2 + 1]);
+    ctx.lineTo(bottomInnerX[prevIndex * 2 + 1], bottomInnerY[prevIndex * 2 + 1]);
     ctx.stroke();
 
     // Draw horizontal inner lines
     ctx.beginPath();
     for (let i = 0; i < 2; i++) {
-        ctx.moveTo(midInnerX[prev * 2 + i], midInnerY[prev * 2 + i]);
-        ctx.lineTo(midInnerX[curr * 2 + i], midInnerY[curr * 2 + i]);
-        ctx.lineTo(midInnerX[next * 2 + i], midInnerY[next * 2 + i]);
+        ctx.moveTo(midInnerX[prevIndex * 2 + i], midInnerY[prevIndex * 2 + i]);
+        ctx.lineTo(midInnerX[currIndex * 2 + i], midInnerY[currIndex * 2 + i]);
+        ctx.lineTo(midInnerX[nextIndex * 2 + i], midInnerY[nextIndex * 2 + i]);
     }
     ctx.stroke();
 
