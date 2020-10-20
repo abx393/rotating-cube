@@ -93,23 +93,72 @@ function drawInnerHorizontalLines(ctx, midInnerX, midInnerY) {
 
 // Draw edges
 function drawEdges(ctx, topX, topY, bottomX, bottomY) {
+    drawTopEdges(ctx, topX, topY);
+    drawBottomEdges(ctx, bottomX, bottomY, true, 0);
+    drawVerticalEdges(ctx, topX, topY, bottomX, bottomY, true, 0);
+}
+
+// Draw top edges
+function drawTopEdges(ctx, topX, topY) {
     for (let i = 0; i < 4; i++) {
-        // Draw vertical edge
-        ctx.beginPath();
-        ctx.moveTo(topX[i], topY[i]);
-        ctx.lineTo(bottomX[i], bottomY[i]);
-        ctx.stroke();
-        
-        // Draw top edge
         ctx.beginPath();
         ctx.moveTo(topX[i], topY[i]);
         ctx.lineTo(topX[(i + 1) % 4], topY[(i + 1) % 4]);
         ctx.stroke();
-        
-        // Draw bottom edge
+    }
+}
+
+// Draw bottom edges
+function drawBottomEdges(ctx, bottomX, bottomY, transparent, index) {
+    var i = mod(index - 1, 4);
+    var j = index;
+    var k = mod(index + 1, 4);
+    var h = mod(index + 2, 4);
+    
+    ctx.beginPath();
+    ctx.moveTo(bottomX[i], bottomY[i]);
+    ctx.lineTo(bottomX[j], bottomY[j]);
+    ctx.lineTo(bottomX[k], bottomY[k]);
+    
+    if (transparent) {
+        ctx.lineTo(bottomX[h], bottomY[h]);
+        ctx.lineTo(bottomX[i], bottomY[i]);
+    }
+    ctx.stroke();
+}
+
+// Draw vertical edges
+function drawVerticalEdges(ctx, topX, topY, bottomX, bottomY, transparent, index) {
+    var i = mod(index - 1, 4); 
+    var j = index;
+    var k = mod(index + 1, 4);
+    var h = mod(index + 2, 4);
+    
+    ctx.beginPath();
+    ctx.moveTo(topX[i], topY[i]);
+    ctx.lineTo(bottomX[i], bottomY[i]);
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.moveTo(topX[j], topY[j]);
+    ctx.lineTo(bottomX[j], bottomY[j]);
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.moveTo(topX[k], topY[k]);
+    ctx.lineTo(bottomX[k], bottomY[k]);
+    ctx.stroke();
+    
+    if (transparent) {
         ctx.beginPath();
-        ctx.moveTo(bottomX[i], bottomY[i]);
-        ctx.lineTo(bottomX[(i + 1) % 4], bottomY[(i + 1) % 4]);
+        ctx.moveTo(topX[h], topY[h]);
+        ctx.lineTo(bottomX[h], bottomY[h]);
         ctx.stroke();
     }
+    
+}
+
+// modulus function for negative x
+function mod(x, y) {
+    return (x + y) % y;
 }

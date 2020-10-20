@@ -56,8 +56,11 @@ function drawTransparentCube() {
 }
 
 function drawSolvedRubiksCube() {
+    const transparent = false;
+    
     var canvas = document.getElementById("rubiksCanvas");
     var ctx = canvas.getContext("2d");
+    ctx.lineWidth = 10;
 
     // Reset canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -100,36 +103,17 @@ function drawSolvedRubiksCube() {
     fillSide(ctx, currIndex, nextIndex, topX, topY, bottomX, bottomY, colors[nextIndex]);
 
     // Draw edges of bottom layer of cube (line segments connecting top four corner points)
-    ctx.beginPath();
-    ctx.moveTo(bottomX[prevIndex], bottomY[prevIndex]);
-    ctx.lineTo(bottomX[currIndex], bottomY[currIndex]);
-    ctx.lineTo(bottomX[nextIndex], bottomY[nextIndex]);
-    ctx.stroke();
+    drawBottomEdges(ctx, bottomX, bottomY, transparent, currIndex);
 
     // Draw edges of top layer of cube (line segments connecting top four corner points)
-    ctx.beginPath();
-    ctx.moveTo(topX[0], topY[0]);
-    for (let i = 1; i < 4; i++) {
-        ctx.lineTo(topX[i], topY[i]);
-    }
-    ctx.lineTo(topX[0], topY[0]);
-    ctx.stroke();
-    ctx.fillStyle = "#FF3333";
-    ctx.fill();
+    drawTopEdges(ctx, topX, topY);
+    fillTop(ctx, topX, topY, "#FF3333");
+    
+    drawVerticalEdges(ctx, topX, topY, bottomX, bottomY, transparent, currIndex);
 
-    // Draw vertical edges
-    for (let i = 0; i < 4; i++) {
-        if (i != currIndex && i != prevIndex && i != nextIndex) {
-            continue;
-        }
-        ctx.beginPath();
-        ctx.moveTo(topX[i], topY[i]);
-        ctx.lineTo(bottomX[i], bottomY[i]);
-        ctx.stroke();
-    }
-
+    //drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomInnerY, transparent, currIndex);
+    
     // Draw vertical inner lines
-    ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.moveTo(topInnerX[currIndex * 2], topInnerY[currIndex * 2]);
     ctx.lineTo(bottomInnerX[currIndex * 2], bottomInnerY[currIndex * 2]);
@@ -150,24 +134,9 @@ function drawSolvedRubiksCube() {
     }
     ctx.stroke();
 
-    // Draw inner lines of top face
-    for (let i = 0; i < 4; i++) {
-        //ctx.lineWidth = 3;
-        ctx.beginPath();
-
-        var curr = i * 2;
-        var next = (i * 2 + 5) % 8;
-
-        ctx.moveTo(topInnerX[curr], topInnerY[curr]);
-        ctx.lineTo(topInnerX[next], topInnerY[next]);
-        ctx.stroke();
-    }
+    drawInnerTopLines(ctx, topInnerX, topInnerY);
 
     time += interval;
-}
-
-function mod(x, y) {
-    return (x + y) % y;
 }
 
 document.getElementById("drawBtn").addEventListener("click", draw);
