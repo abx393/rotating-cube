@@ -8,7 +8,7 @@ function draw() {
 }
 
 function drawTransparentCube() {
-    var canvas = document.getElementById("transparentcanvas");
+    var canvas = document.getElementById("transparentCanvas");
     var ctx = canvas.getContext("2d");
 
     // Reset canvas
@@ -61,7 +61,7 @@ function drawTransparentCube() {
 function drawRubiksCube() {
     //console.log("time " + time);
 
-    var canvas = document.getElementById("rubikscanvas");
+    var canvas = document.getElementById("rubiksCanvas");
     var ctx = canvas.getContext("2d");
 
     // Reset canvas

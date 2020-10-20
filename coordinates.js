@@ -1,5 +1,8 @@
 // Returns (x, y) coordinates of each of the 4 top and 4 bottom corners of the cube
 function cornerCoordinates(width, height) {
+    var horizontalScale = width / 2;
+    var verticalScale = height / 5;
+    var verticalOffset = 4 * height / 5;
     var topX = [];
     var topY = [];
     
@@ -9,11 +12,11 @@ function cornerCoordinates(width, height) {
     
     // Compute (x, y) coordinates of four corners of top layer and bottom layer
     for (let i = 0; i < 4; i++) {
-        bottomX[i] = -150 * Math.sin(2 * Math.PI * (time / period + i / 4)) + 150; 
-        bottomY[i] = 75 * Math.cos(2 * Math.PI * (time / period + i / 4)) + 250;
+        bottomX[i] = - horizontalScale * Math.sin(2 * Math.PI * (time / period + i / 4)) + horizontalScale; 
+        bottomY[i] = verticalScale * Math.cos(2 * Math.PI * (time / period + i / 4)) + (height - verticalOffset);
         
-        topX[i] = -150 * Math.sin(2 * Math.PI * (time / period + i / 4)) + 150; 
-        topY[i] = 75 * Math.cos(2 * Math.PI * (time / period + i / 4)) + 75;
+        topX[i] = - horizontalScale * Math.sin(2 * Math.PI * (time / period + i / 4)) + horizontalScale; 
+        topY[i] = verticalScale * Math.cos(2 * Math.PI * (time / period + i / 4)) + verticalOffset;
     }
     
     var coords = [];
