@@ -1,5 +1,5 @@
 * {
-    background-color: rgb(28, 92, 179);
+    background-color: rgb(8, 132, 229);
 }
 
 h1 {
@@ -28,16 +28,18 @@ p {
 
 canvas#transparentCanvas {
     display: inline-block;
-    margin-left: 50px;
+    margin-right: 50px;
     margin-top: 50px;
 }
 
 canvas#rubiksCanvas {
     display: inline-block;
-    margin-right: 50px;
+    margin-left: 50px;
     margin-top: 50px;
 }
 
 img {
-    
-} 
+    width: auto;
+    height: auto;
+    display: inline-block;
+}
