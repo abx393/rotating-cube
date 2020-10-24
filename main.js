@@ -60,7 +60,6 @@ function drawSolvedRubiksCube() {
     
     var canvas = document.getElementById("rubiksCanvas");
     var ctx = canvas.getContext("2d");
-    ctx.lineWidth = 10;
 
     // Reset canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -127,5 +126,4 @@ function drawSolvedRubiksCube() {
 
     time += interval;
 }
-
-document.getElementById("drawBtn").addEventListener("click", draw);
+draw();

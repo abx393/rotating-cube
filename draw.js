@@ -1,6 +1,5 @@
 // Given Canvas.Context object, traces and fills the top edge of the cube
 function fillTop(ctx, topX, topY, fillColor) {
-    ctx.lineWidth = 6;
     ctx.beginPath();
     ctx.moveTo(topX[0], topY[0]);
     
@@ -13,7 +12,6 @@ function fillTop(ctx, topX, topY, fillColor) {
 
 // Trace and fill bottom face of cube
 function fillBottom(ctx, bottomX, bottomY, fillColor) {
-    ctx.lineWidth = 6;
     ctx.beginPath();
     ctx.moveTo(bottomX[0], bottomY[0]);
     
@@ -38,7 +36,7 @@ function fillSide(ctx, from, to, topX, topY, bottomX, bottomY, fillColor) {
 // Draw inner lines of top face
 function drawInnerTopLines(ctx, topInnerX, topInnerY) {
     for (let i = 0; i < 4; i++) {
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 5;
         ctx.beginPath();
 
         var curr = i * 2;
@@ -53,7 +51,7 @@ function drawInnerTopLines(ctx, topInnerX, topInnerY) {
 // Draw inner lines of bottom face
 function drawInnerBottomLines(ctx, bottomInnerX, bottomInnerY) {
     for (let i = 0; i < 4; i++) {
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 5;
         ctx.beginPath();
 
         var curr = i * 2;
@@ -69,7 +67,7 @@ function drawInnerBottomLines(ctx, bottomInnerX, bottomInnerY) {
 function drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomInnerY, indices) {
     for (let i = 0; i < indices.length; i++) {
         var index = indices[i];
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 5;
         ctx.beginPath();
         ctx.moveTo(topInnerX[index], topInnerY[index]);
         ctx.lineTo(bottomInnerX[index], bottomInnerY[index]);
