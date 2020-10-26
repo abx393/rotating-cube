@@ -44,6 +44,7 @@ function drawInnerTopLines(ctx, topInnerX, topInnerY) {
 
         ctx.moveTo(topInnerX[curr], topInnerY[curr]);
         ctx.lineTo(topInnerX[next], topInnerY[next]);
+        ctx.strokeStyle = "#000000";
         ctx.stroke();
     }
 }
