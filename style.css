@@ -10,7 +10,7 @@ h1 {
     text-align: center;
 }
 
-button {
+button#drawBtn {
     background-color: bisque;
     width: 100px;
     height: 60px;
@@ -96,4 +96,24 @@ a#linkedin {
 
 .fa-linkedin {
     background: #3B5998;
+}
+
+button#resumeBtn {
+    width: 200px;
+    background-color: dodgerblue;
+    border: none;
+    color: white;
+    padding: 5px 20px 5px 0px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: 30px;
+    text-align: left;
+}
+
+button#resumeBtn:hover {
+    background-color: royalblue;
+}
+
+a#emailLink {
+    margin-left: 30px;
 }
