@@ -45,7 +45,7 @@ canvas#rubiksCanvas {
 img {
     width: auto;
     height: auto;
-    display: inline-block;
+    display: block;
 }
 
 a {
