@@ -3,15 +3,9 @@ const period = 5000; // Period of cube's rotation
 var time = 0; // Current time
 
 function ipRequest() {
-    /*
-    const fs = require(['fs'])
-    fs.readFile("../key.txt", (err, key) => {
-        if (err) {
-            throw err;
-        }
-        console.log("key " + key.toString());
+    $.get("../key.txt", function(data) {
+        alert("key: " + data);
     });
-    */
 }
 
 function main() {
