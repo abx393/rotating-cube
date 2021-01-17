@@ -4,7 +4,7 @@ var time = 0; // Current time
 
 function ipRequest() {
     const fs = require('fs')
-    fs.readFile("key.txt", (err, key) => {
+    fs.readFile("../key.txt", (err, key) => {
         if (err) {
             throw err;
         }
