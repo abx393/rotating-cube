@@ -1,4 +1,4 @@
 *.log
 
 # API key
-assets/key.txt
+.env
