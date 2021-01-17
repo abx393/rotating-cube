@@ -2,6 +2,21 @@ const interval = 5; // Sampling period
 const period = 5000; // Period of cube's rotation
 var time = 0; // Current time
 
+function ipRequest() {
+    const fs = require('fs')
+    fs.readFile("key.txt", (err, key) => {
+        if (err) {
+            throw err;
+        }
+        console.log("key " + key.toString());
+    });
+}
+
+function main() {
+    ipRequest();
+    draw();
+}
+
 function draw() {
     setInterval(drawTransparentCube, interval);
     setInterval(drawSolvedRubiksCube, interval);
@@ -126,4 +141,5 @@ function drawSolvedRubiksCube() {
 
     time += interval;
 }
-draw();
+
+main();
