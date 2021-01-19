@@ -1,9 +1,11 @@
-//require('dotenv');.config();
-
+/*
 require(['dotenv'], function(dotenv) {
     dotenv.config();
     //console.log(process.env)
 });
+*/
+
+let key = process.env.API_KEY;
 
 const interval = 5; // Sampling period
 const period = 5000; // Period of cube's rotation
