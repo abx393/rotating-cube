@@ -1,8 +1,8 @@
 //require('dotenv').config();
 
 require(['dotenv'], function(dotenv) {
-    dotenv.config();
-    console.log(process.env)
+    //dotenv.config();
+    //console.log(process.env)
 });
 
 const interval = 5; // Sampling period
