@@ -2,7 +2,7 @@
   "name": "rotating-cube",
   "version": "1.0.0",
   "description": "personal website",
-  "main": "index.js",
+  "main": "scripts/main.js",
   "directories": {
     "doc": "docs"
   },
