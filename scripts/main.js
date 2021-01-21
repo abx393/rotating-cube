@@ -1,27 +1,6 @@
-/*
-require(['dotenv'], function(dotenv) {
-    dotenv.config();
-    //console.log(process.env)
-});
-*/
-
-
 const interval = 5; // Sampling period
 const period = 5000; // Period of cube's rotation
 var time = 0; // Current time
-
-function ipRequest() {
-    /*
-    $.get("../assets/key.txt", function(data) {
-        alert("key: " + data);
-    });
-    */
-}
-
-function main() {
-    ipRequest();
-    draw();
-}
 
 function draw() {
     setInterval(drawTransparentCube, interval);
@@ -148,4 +127,4 @@ function drawSolvedRubiksCube() {
     time += interval;
 }
 
-main();
+draw();
