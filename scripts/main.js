@@ -2,8 +2,7 @@ const interval = 5; // Sampling period
 const period = 5000; // Period of cube's rotation
 var time = 0; // Current time
 
-function main() {
-    console.log("check 1");
+function ipstackQuery() {
     function reqListener() {
         console.log(this.responseText);
     }
@@ -15,7 +14,10 @@ function main() {
 
     oReq.open("get", "../index.php", true);
     oReq.send();
-    console.log("check 2");
+}
+
+function main() {
+    ipStackQuery();
     draw();
 }
 
