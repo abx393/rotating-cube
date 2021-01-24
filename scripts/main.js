@@ -7,7 +7,7 @@ function main() {
     draw();
 }
 
-function ipstackQuery() {
+function ipStackQuery() {
     function reqListener() {
         console.log(this.responseText);
     }
