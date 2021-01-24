@@ -2,6 +2,18 @@ const interval = 5; // Sampling period
 const period = 5000; // Period of cube's rotation
 var time = 0; // Current time
 
+function main() {
+    var oReq = new XMLHttpRequest();
+    oReq.onLoad = function() {
+        console.log(this.responseText);
+    }
+
+    oReq.open("get", "../index.php", true);
+    oReq.send();
+
+    draw();
+}
+
 function draw() {
     setInterval(drawTransparentCube, interval);
     setInterval(drawSolvedRubiksCube, interval);
@@ -127,4 +139,4 @@ function drawSolvedRubiksCube() {
     time += interval;
 }
 
-draw();
+main();
