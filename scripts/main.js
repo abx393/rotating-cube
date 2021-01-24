@@ -8,14 +8,18 @@ function main() {
 }
 
 function ipStackQuery() {
+    /*
     function reqListener() {
         console.log(this.responseText);
     }
+    */
 
     var oReq = new XMLHttpRequest();
+    /*
     oReq.onLoad = function() {
         console.log(this.responseText);
     }
+    */
 
     oReq.open("get", "../index.php", true);
     oReq.send();

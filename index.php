@@ -7,7 +7,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 // Store the response data
 $json = curl_exec($ch);
-//var_dump($json);
+var_dump($json);
 
 curl_close($ch);
 
