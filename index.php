@@ -1,5 +1,7 @@
 <?php 
 $api_key = getenv('API_KEY');
+var_dump($api_key);
+print_r($api_key);
 
 // Initialize CURL
 $ch = curl_init('https://api.ipstack.com/check?access_key='.$api_key.'');
