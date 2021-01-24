@@ -15,6 +15,6 @@ curl_close($ch);
 $response_decoded = json_decode($json, true);
 
 // Output response
-echo $response_decoded['continent_name'];
+echo $response_decoded;
 
 include_once("index.html");
