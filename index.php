@@ -2,7 +2,7 @@
 $api_key = getenv('API_KEY');
 
 // Initialize CURL
-$ch = curl_init('https://api.ipstack.com/check?access_key='.$api_key.'');
+$ch = curl_init('http://api.ipstack.com/check?access_key='.$api_key.'');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 // Store the response data
