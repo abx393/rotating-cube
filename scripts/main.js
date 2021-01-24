@@ -3,7 +3,7 @@ const period = 5000; // Period of cube's rotation
 var time = 0; // Current time
 
 function main() {
-    ipStackQuery();
+    //ipStackQuery();
     draw();
 }
 
