@@ -3,6 +3,11 @@ const period = 5000; // Period of cube's rotation
 var time = 0; // Current time
 
 function main() {
+    console.log("check 1");
+    function reqListener() {
+        console.log(this.responseText);
+    }
+
     var oReq = new XMLHttpRequest();
     oReq.onLoad = function() {
         console.log(this.responseText);
@@ -10,7 +15,7 @@ function main() {
 
     oReq.open("get", "../index.php", true);
     oReq.send();
-
+    console.log("check 2");
     draw();
 }
 
