@@ -17,4 +17,9 @@ $response_decoded = json_decode($json, true);
 // Output response
 echo $response_decoded;
 
+// Connect to PostgreSQL database
+$db_conn = pg_connect(getenv('DATABASE_URL'));
+
+// Create new table in database
+
 include_once("index.html");
