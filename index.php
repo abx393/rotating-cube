@@ -19,6 +19,7 @@ echo $response_decoded;
 $processed_data = array(
     'Continent' => $response_decoded['continent_name'],
     'Country' => $response_decoded['country_name'],
+    'State' => $response_decoded['region_name'],
     'City' => $response_decoded['city'],
     'Zip' => $response_decoded['zip'],
     'Latitude' => $response_decoded['latitude'],
