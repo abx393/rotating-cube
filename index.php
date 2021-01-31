@@ -16,10 +16,20 @@ $response_decoded = json_decode($json, true);
 
 // Output response
 echo $response_decoded;
+$processed_data = array(
+    'Continent' => $response_decoded['continent_name'],
+    'Country' => $response_decoded['country_name'],
+    'City' => $response_decoded['city'],
+    'Zip' => $response_decoded['zip'],
+    'Latitude' => $response_decoded['latitude'],
+    'Longitude' => $response_decoded['longitude']
+);
 
 // Connect to PostgreSQL database
 $db_conn = pg_connect(getenv('DATABASE_URL'));
 
-// Create new table in database
+// Update table in database
+$res = pg_insert($db_conn, 'Visitors', $processed_data);
+var_dump($res);
 
 include_once("index.html");
