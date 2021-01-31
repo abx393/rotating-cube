@@ -15,7 +15,8 @@ curl_close($ch);
 $response_decoded = json_decode($json, true);
 
 // Output response
-echo $response_decoded;
+var_dump($response_decoded);
+
 $processed_data = array(
     'Continent' => $response_decoded['continent_name'],
     'Country' => $response_decoded['country_name'],
