@@ -1,5 +1,5 @@
 const interval = 5; // Sampling period
-const period = 5000; // Period of cube's rotation
+const period = 10000; // Period of cube's rotation
 var time = 0; // Current time
 
 function main() {
@@ -61,7 +61,7 @@ function drawTransparentCube() {
     var bottomInnerY = innerCoords[5];
 
     // Fill front, left, back, and side faces of the cube with same color
-    const fillColor = "#8a3b2c";
+    const fillColor = "#9A9A9A";
     for (let i = 0; i < 4; i++) {
         var j = (i + 1) % 4;
         fillSide(ctx, i, j, topX, topY, bottomX, bottomY, fillColor);
@@ -116,7 +116,7 @@ function drawSolvedRubiksCube() {
     );
     var currIndex = mod(4 - quad, 4);
 
-    var colors = ["#11FF34", "#EEEEEE", "#0034FF", "#FFFF00"];
+    var colors = ["#11FF3499", "#FF333399", "#0034FF99", "#FF8C0099"];
 
     var prevIndex = mod(currIndex - 1, 4);
     var nextIndex = mod(currIndex + 1, 4);
@@ -129,7 +129,7 @@ function drawSolvedRubiksCube() {
 
     // Draw edges of top layer of cube (line segments connecting top four corner points)
     drawTopEdges(ctx, topX, topY);
-    fillTop(ctx, topX, topY, "#FF3333");
+    fillTop(ctx, topX, topY, "#EEEEEE99");
     
     drawVerticalEdges(ctx, topX, topY, bottomX, bottomY, transparent, currIndex);
 

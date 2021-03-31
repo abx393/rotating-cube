@@ -22,30 +22,59 @@
 
     <button id = "drawBtn" >Start</button>
 
-    <canvas id = "rubiksCanvas" width = "150" height = "150"></canvas>
-      <h1>Welcome!</h1>
-    <canvas id = "transparentCanvas" width = "150" height = "150"></canvas>
+    <h1 id="about-me-h1">About me</h1>
 
-    <img href = "profile.jpg"/>
+    <p>Hello! I'm Abhinav Bandari, a first-year computer science student at the University of Washington's Paul Allen School of Computer Science and Engineering. </p>
+    <p>I've worked on computer science research, contributed to open source projects, worked on independent projects, and participated in hackathons. See more below! </p>
 
-    <p>Glad to see you here! I'm Abhinav, a first-year computer science student at the University of Washington.</p>
-    <p>Take a look at what I'm working on: </p>
+    <a class = "fa fa-github-square" href = "https://www.github.com/abx393" target = "_blank"></a>
 
-        <a class = "fa fa-github-square" href = "https://www.github.com/abx393" target = "_blank"></a>
-        <a href = "https://www.github.com/abx393" target = "_blank">GitHub Portfolio</a>
-    
-        <a id = "linkedin" class = "fa fa-linkedin" href = "https://www.linkedin.com/in/abhinav-bandari-538696166/" target = "_blank"></a>
-        <a href = "https://www.linkedin.com/in/abhinav-bandari-538696166/" target = "_blank">Feel free to connect on LinkedIn!</a> 
-      
-        <a href = "docs/Resume.pdf" download = "Resume.pdf">
-            <button id = "resumeBtn" class = "btn">
-              <i class = "fa fa-download"></i>
-              Resume
-            </button>
-        </a>
-      
-      <a id = "emailLink" href = "mailto:abandari99@gmail.com">Reach out by email</a>
-      
+    <a id = "linkedin" class = "fa fa-linkedin" href = "https://www.linkedin.com/in/abhinav-bandari-538696166/" target = "_blank"></a>
+
+    <a id = "emailLink" href = "mailto:abandari99@gmail.com"></a>
+    <canvas id = "transparentCanvas" width = "200" height = "200"></canvas>
+
+    <h1 id="experience-h1">Work Experience</h1>
+    </br>
+
+    <div>
+      <h2>Research Assistant, Ubiquitous Computing Laboratory, University of Washington-Seattle</h2>
+      <p>Developed non-contact acoustic sensing algorithm to detect and identify a user's exercise through their smartphone with 83.0% accuracy;
+      preparing to submit for publication.</p>
+      <p>Implemented ultrasound sensing through phone's speaker and microphone, used Fourier analysis to develop audio spectrograms
+        for each exericse, and trained deep neural networks to analyze the spectrogram images and identify the performed exercise. </p>
+      <p>Worked with graduate and undergraduate student researchers; advised by Dr. Shwetak Patel. </p>
+    </div>
+    </br>
+
+    <div>
+      <h2>Instructor, Coding with Kids</h2>
+      <p>Taught weekly after-school classes to elementary school students in Scratch and Python programming languages.</p>
+      <p>Worked with another instructor to teach provided curriculum and adapt lessons as necessary.</p>
+    </div>
+
+    <canvas id = "rubiksCanvas" width = "200" height = "200"></canvas>
+
+    <h1 id="projects-h1">Projects</h1>
+    </br>
+    <div>
+      <h2>DawgMaps</h2>
+      <p>Developed Android application and React web app to crowdsource anonymous user location data.</p>
+      <p>App displays real-time heatmap visualization of crowds, overlayed on a Google Maps interface.</p>
+      <p>Built during UW Hack'20 hackathon in a team of four members; finished top 3 out of 81 projects.</p>
+      <p>View source code <a href="https:wwww.github.com/abhaybd/DawgMaps">here</a>.</p>
+    </div>
+    </br>
+
+    <div>
+      <h2>Libra</h2>
+      <p>Contributed to open-source Python automatic machine learning (autoML) library that automates machine learning
+        preprocessing, model building, training, and evaluation.</p>
+      <p>Personal contributions: Developed backend for image classification (convolutional neural networks) and
+        artificial image generation (generative adversarial networks) queries. </p>
+      <p>Library has over 10,000 downloads.</p>
+    </div>
+
     <script src = "scripts/coordinates.js"></script>
     <script src = "scripts/draw.js"></script>
     <script src = "scripts/main.js"></script>

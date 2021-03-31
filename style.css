@@ -1,13 +1,15 @@
 body {
-    /*background-color: rgb(8, 132, 229, 0.6);*/
-    background: linear-gradient(to top, rgb(8, 132, 229, 0.7), rgb(232, 227, 22, 0.2)) fixed;
+    background-color: #131313;
 }
 
-h1 {
+h1#about-me-h1 {
+    margin-top: 60px
+}
+
+h1, h2, h3 {
+    margin-left: 50px;
     font-family: sans-serif;
-    font-size: 30px;
-    display: inline-block;
-    text-align: center;
+    color: #DFDFDF;
 }
 
 button#drawBtn {
@@ -18,28 +20,28 @@ button#drawBtn {
     font-size: 20px;
     margin-left: 50px;
     display: none;
+    color: #989898;
 }
 
 p {
-    color: black;
     font-family: sans-serif;
+    font-size: 18px;
     margin-left: 50px;
+    color: #DFDFDF;
 }
 
 canvas#transparentCanvas {
-    display: inline-block;
-    margin-left: 500px;
-    margin-right: 50px;
+    display: block;
     margin-top: 50px;
-    align-content: right;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 canvas#rubiksCanvas {
-    display: inline-block;
-    margin-left: 50px;
-    margin-right: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 50px;
-    align-content: left;
 }
 
 img {
@@ -67,7 +69,7 @@ a:hover {
     text-decoration: underline;
 }
 
-a: active {
+a:active {
     color: purple;
     text-decoration: underline;
 }
