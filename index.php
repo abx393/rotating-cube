@@ -1,4 +1,5 @@
-<?php 
+<?php
+/*
 $api_key = getenv('API_KEY');
 
 // Initialize CURL
@@ -33,5 +34,6 @@ $db_conn = pg_connect(getenv('DATABASE_URL'));
 // Update table in database
 $res = pg_insert($db_conn, 'Visitors', $processed_data, PG_DML_ESCAPE);
 //var_dump($res);
+*/
 
 include_once("index.html");
