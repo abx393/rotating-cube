@@ -54,25 +54,22 @@ a {
     /*margin-left: 50px;*/
 }
 
+/*
 a:link {
-    color: black;
+    color: #007BFF;
     text-decoration: none;
 }
 
 a:visited {
-    color: black;
+    color: #551ABB;
     text-decoration: none;
 }
 
-a:hover {
-    color: green;
-    text-decoration: underline;
-}
-
 a:active {
-    color: purple;
+    color: #EE0000;
     text-decoration: underline;
 }
+*/
 
 a#linkedin {
     color: white;
