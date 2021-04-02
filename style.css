@@ -32,12 +32,6 @@ p {
     margin-right: auto;
 }
 
-img {
-    width: auto;
-    height: auto;
-    display: block;
-}
-
 .fa {
     padding: 10px 10px 0px 10px;
     font-size: 50px;
