@@ -1,11 +1,9 @@
 body {
     background-color: #131313;
-    margin-top: 200px;
-    margin-bottom: 200px;
+    margin: 200px 200px 200px 200px;
 }
 
 h1, h2, h3 {
-    margin-left: 200px;
     font-family: sans-serif;
     color: #DFDFDF;
 }
@@ -24,23 +22,14 @@ button#drawBtn {
 p {
     font-family: sans-serif;
     font-size: 18px;
-    margin-left: 200px;
-    margin-right: 200px;
     color: #DFDFDF;
 }
 
-canvas#transparentCanvas {
+.cube {
     display: block;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-}
-
-canvas#rubiksCanvas {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
 }
 
 img {
@@ -49,69 +38,17 @@ img {
     display: block;
 }
 
-a {
-    /*margin-left: 50px;*/
-}
-
-/*
-a:link {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-a:visited {
-    color: #551ABB;
-    text-decoration: none;
-}
-
-a:active {
-    color: #EE0000;
-    text-decoration: underline;
-}
-*/
-
-a#linkedin {
-    color: white;
-    text-decoration: none;
-}
-
 .fa {
     padding: 10px 10px 0px 10px;
-    font-size: 40px;
+    font-size: 50px;
     text-align: center;
-    margin-left: 200px;
+    margin-right: 40px;
+    color: #ffffff99;
+    text-decoration: none;
     height: 50px;
     width: 50px;
 }
 
 .fa:hover{
     opacity: 0.7;
-}
-
-.fa-github-square {
-    background: rgb(255, 125, 0);
-}
-
-.fa-linkedin {
-    background: #3B5998;
-}
-
-button#resumeBtn {
-    width: 200px;
-    background-color: dodgerblue;
-    border: none;
-    color: white;
-    padding: 5px 20px 5px 0px;
-    cursor: pointer;
-    font-size: 15px;
-    margin-left: 30px;
-    text-align: left;
-}
-
-button#resumeBtn:hover {
-    background-color: royalblue;
-}
-
-a#emailLink {
-    margin-left: 30px;
 }

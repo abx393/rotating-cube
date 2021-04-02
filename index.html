@@ -19,20 +19,17 @@
   </head>
     
   <body>
-
     <button id = "drawBtn" >Start</button>
-
     <h1 id="about-me-h1">About me</h1>
 
     <p>Hello! I'm Abhinav Bandari, a first-year computer science student at the University of Washington's Paul Allen School of Computer Science and Engineering. </p>
     <p>I've worked on computer science research, contributed to open source projects, worked on independent projects, and participated in hackathons. See more below! </p>
 
-    <a class = "fa fa-github-square" href = "https://www.github.com/abx393" target = "_blank"></a>
+    <a class="fa fa-github" href="https://www.github.com/abx393" target="_blank"></a>
+    <a class="fa fa-linkedin" href="https://www.linkedin.com/in/abhinav-bandari-538696166/" target="_blank"></a>
+    <a class="fa fa-envelope-square" href="mailto:abandari99@gmail.com"></a>
 
-    <a id = "linkedin" class = "fa fa-linkedin" href = "https://www.linkedin.com/in/abhinav-bandari-538696166/" target = "_blank"></a>
-
-    <a id = "emailLink" href = "mailto:abandari99@gmail.com"></a>
-    <canvas id = "transparentCanvas" width = "200" height = "200"></canvas>
+    <canvas class="cube" id="transparentCanvas" width="250" height="250"></canvas>
 
     <h1 id="experience-h1">Work Experience</h1>
     </br>
@@ -53,14 +50,16 @@
       <p>Worked with another instructor to teach provided curriculum and adapt lessons as necessary.</p>
     </div>
 
-    <canvas id = "rubiksCanvas" width = "200" height = "200"></canvas>
+    <canvas class="cube" id = "rubiksCanvas" width = "250" height = "250"></canvas>
 
     <h1 id="projects-h1">Projects</h1>
     </br>
     <div>
       <h2>DawgMaps</h2>
       <p>Developed Android application and React web app to crowdsource anonymous user location data.</p>
-      <p>App displays real-time heatmap visualization of crowds, overlayed on a Google Maps interface.</p>
+      <p>App displays real-time heatmap visualization of crowd density, overlayed on a Google Maps interface.</p>
+      <p>In the COVID-19 era, users will benefit from having real-time information on which locations are
+        safe to visit.</p>
       <p>Built during UW Hack'20 hackathon in a team of four members; finished top 3 out of 81 projects.</p>
       <p>View source code <a href="https:www.github.com/abhaybd/DawgMaps">here</a>.</p>
     </div>
@@ -73,6 +72,16 @@
       <p>Personal contributions: Developed backend for image classification (convolutional neural networks) and
         artificial image generation (generative adversarial networks) queries. </p>
       <p>Library has over 17,000 downloads. View source code <a href="https:www.github.com/palashio/libra">here</a></p>
+    </div>
+    </br>
+
+    <div>
+      <h2>PneumoNet</h2>
+      <p>Developed deep learning classification algorithm to take a chest X-ray image as input and output
+        a diagnosis for four heart and lung conditions (pneumonia, pneumothorax, cardiomegaly, pulmonary
+        edema) </p>
+      <p>Developed image classification algorithm using dataset of chest X-rays released by the National Institutes of Health.</p>
+      <p>The algorithm's performance was comparable to performance of state-of-the-art algorithms on this dataset.</p>
     </div>
 
     <script src = "scripts/coordinates.js"></script>
