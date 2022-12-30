@@ -24,12 +24,11 @@
 
     <p>Hello! I'm Abhinav Bandari, a senior studying computer science at the University of Washington's Paul Allen School of Computer Science and Engineering. </p>
     <p>I've worked on computer science research, contributed to open source projects, worked on independent projects, and participated in hackathons. See more below! </p>
+    </br>
 
     <a class="fa fa-github" href="https://www.github.com/abx393" target="_blank"></a>
     <a class="fa fa-linkedin" href="https://www.linkedin.com/in/abhinavbandari" target="_blank"></a>
     <a class="fa fa-envelope-square" href="mailto:abandari@cs.washington.edu"></a>
-
-    <canvas class="cube" id="transparentCanvas" width="250" height="250"></canvas>
 
     <h1 id="experience-h1">Work Experience</h1>
     </br>
@@ -56,8 +55,7 @@
 
     <div>
       <h2>Research Assistant, Ubiquitous Computing Laboratory, University of Washington-Seattle</h2>
-      <p>Developed non-contact acoustic sensing algorithm to detect and identify a user's exercise through their smartphone with 83.0% accuracy;
-      preparing to submit for publication.</p>
+      <p>Developed non-contact acoustic sensing algorithm to detect and identify a user's exercise through their smartphone with 83.0% accuracy.</p>
       <p>Implemented ultrasound sensing through phone's speaker and microphone, used Fourier analysis to develop audio spectrograms
         for each exericse, and trained deep neural networks to analyze the spectrogram images and identify the performed exercise. </p>
       <p>Worked with graduate and undergraduate student researchers; advised by Dr. Shwetak Patel. </p>
@@ -69,8 +67,7 @@
       <p>Taught weekly after-school classes to elementary school students in Scratch and Python programming languages.</p>
       <p>Worked with another instructor to teach provided curriculum and adapt lessons as necessary.</p>
     </div>
-
-    <canvas class="cube" id = "rubiksCanvas" width = "250" height = "250"></canvas>
+    </br>
 
     <h1 id="projects-h1">Projects</h1>
     </br>
@@ -103,10 +100,24 @@
       <p>Developed image classification algorithm using dataset of chest X-rays released by the National Institutes of Health.</p>
       <p>The algorithm's performance was comparable to performance of state-of-the-art algorithms on this dataset.</p>
     </div>
+    </br>
+
+    <h1 id="puzzles-h1">Puzzle Collection</h1>
+    <div style="width: 100%;">
+      <div style="width: 250px; float:left;">
+        <canvas class="cube" id="transparentCanvas" width="200" height="200"></canvas>
+      </div>
+      <div style="margin-left:100px; float:left; width:250px;">
+        <canvas class="cube" id = "rubiksCanvas" width = "200" height = "200"></canvas>
+      </div>
+      <div style="margin-left:100px; float:left; width:250px;">
+        <canvas class="cube" id="pyraminxCanvas" width="200" height="200"></canvas>
+      </div>
+    </div>
 
     <script src = "scripts/coordinates.js"></script>
     <script src = "scripts/draw.js"></script>
     <script src = "scripts/main.js"></script>
-      
+
   </body>
 </html>
