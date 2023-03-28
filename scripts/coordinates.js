@@ -11,7 +11,7 @@ function cornerCoordinates(width, height, numSides) {
     let bottomY = [];
     
     // Compute (x, y) coordinates of four corners of top layer and bottom layer
-    for (let i = 0; i < numSides; i++) {
+    for (let i = 0; i < 4; i++) {
         topX[i] = - horizontalScale * Math.sin(2 * Math.PI * (time / period + i / numSides)) + horizontalScale;
         topY[i] = verticalScale * Math.cos(2 * Math.PI * (time / period + i / numSides)) + verticalOffset;
         
@@ -29,39 +29,35 @@ function cornerCoordinates(width, height, numSides) {
 }
 
 // Compute (x, y) coordinates of inner points of top, middle, and bottom layer
-function innerCoordinates(width, height, topX, topY, bottomX, bottomY, numSides) {
+function innerCoordinates(width, height, topX, topY, bottomX, bottomY, numSides, dim) {
     let topInnerX = [];
     let topInnerY = [];
-    for (let i = 0; i < numSides; i++) {
-        let j = (i + 1) % numSides;
-        
-        topInnerX[i * 2] = topX[i] + (topX[j] - topX[i]) / 3;
-        topInnerX[i * 2 + 1] = topX[i] + 2 * (topX[j] - topX[i]) / 3;
-        
-        topInnerY[i * 2] = topY[i] + (topY[j] - topY[i]) / 3;
-        topInnerY[i * 2 + 1] = topY[i] + 2 * (topY[j] - topY[i]) / 3;
+    for (let i = 0; i < 4; i++) {
+        let j = (i + 1) % 4;
+
+        for (let k = 0; k < dim - 1; k++) {
+            topInnerX[i * (dim - 1) + k] = topX[i] + (k+1) * (topX[j] - topX[i]) / dim;
+            topInnerY[i * (dim - 1) + k] = topY[i] + (k+1) * (topY[j] - topY[i]) / dim;
+        }
     }
     
     let midInnerX = [];
     let midInnerY = [];
-    for (let i = 0; i < numSides; i++) {
-        midInnerX[i * 2] = topX[i] + (bottomX[i] - topX[i]) / 3;
-        midInnerX[i * 2 + 1] = topX[i] + 2 * (bottomX[i] - topX[i]) / 3;
-        
-        midInnerY[i * 2] = topY[i] + (bottomY[i] - topY[i]) / 3;
-        midInnerY[i * 2 + 1] = topY[i] + 2 * (bottomY[i] - topY[i]) / 3;
+    for (let i = 0; i < 4; i++) {
+        for (let k = 0; k < dim - 1; k++) {
+            midInnerX[i * (dim - 1) + k] = topX[i] + (k+1) * (bottomX[i] - topX[i]) / dim;
+            midInnerY[i * (dim - 1) + k] = topY[i] + (k+1) * (bottomY[i] - topY[i]) / dim;
+        }
     }
     
     let bottomInnerX = [];
     let bottomInnerY = [];
-    for (let i = 0; i < numSides; i++) {
-        let j = (i + 1) % numSides;
-        
-        bottomInnerX[i * 2] = bottomX[i] + (bottomX[j] - bottomX[i]) / 3;
-        bottomInnerX[i * 2 + 1] = bottomX[i] + 2 * (bottomX[j] - bottomX[i]) / 3;
-        
-        bottomInnerY[i * 2] = bottomY[i] + (bottomY[j] - bottomY[i]) / 3;
-        bottomInnerY[i * 2 + 1] = bottomY[i] + 2 * (bottomY[j] - bottomY[i]) / 3;
+    for (let i = 0; i < 4; i++) {
+        let j = (i + 1) % 4;
+        for (let k = 0; k < dim - 1; k++) {
+            bottomInnerX[i * (dim - 1) + k] = bottomX[i] + (k+1) * (bottomX[j] - bottomX[i]) / dim;
+            bottomInnerY[i * (dim - 1) + k] = bottomY[i] + (k+1) * (bottomY[j] - bottomY[i]) / dim;
+        }
     }
     
     let coords = [];

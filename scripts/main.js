@@ -35,8 +35,10 @@ function ipStackQuery() {
 }
 
 function draw() {
-    setInterval(drawTransparentCube, interval);
-    setInterval(drawSolvedRubiksCube, interval);
+    //setInterval(drawTransparentCube, interval);
+    setInterval(drawSolvedRubiksCube, interval, 2);
+    setInterval(drawSolvedRubiksCube, interval, 3);
+    setInterval(drawSolvedRubiksCube, interval, 4);
     setInterval(drawPyraminx, interval);
 }
 
@@ -44,6 +46,7 @@ function drawTransparentCube() {
     let canvas = document.getElementById("transparentCanvas");
     let ctx = canvas.getContext("2d");
     let numSides = 4;
+    let dim = 5;
 
     // Reset canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -63,7 +66,8 @@ function drawTransparentCube() {
         topY,
         bottomX,
         bottomY,
-        numSides
+        numSides,
+        dim
     );
     let topInnerX = innerCoords[0];
     let topInnerY = innerCoords[1];
@@ -79,10 +83,14 @@ function drawTransparentCube() {
         fillSide(ctx, i, j, topX, topY, bottomX, bottomY, fillColor);
     }
 
-    drawInnerTopLines(ctx, topInnerX, topInnerY);
-    drawInnerBottomLines(ctx, bottomInnerX, bottomInnerY);
-    drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomInnerY, [0, 1, 2, 3, 4, 5, 6, 7]);
-    drawInnerHorizontalLines(ctx, midInnerX, midInnerY, numSides);
+    drawInnerTopLines(ctx, topInnerX, topInnerY, numSides, dim);
+    drawInnerBottomLines(ctx, bottomInnerX, bottomInnerY, numSides, dim);
+    let indices = [];
+    for (let i = 0; i < (dim - 1) * numSides; i++) {
+        indices.push(i);
+    }
+    drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomInnerY, indices);
+    drawInnerHorizontalLines(ctx, midInnerX, midInnerY, numSides, dim);
 
     // Draw all 8 edges of the cube with a solid black line
     drawEdges(ctx, topX, topY, bottomX, bottomY, numSides);
@@ -90,11 +98,11 @@ function drawTransparentCube() {
     time += interval;
 }
 
-function drawSolvedRubiksCube() {
+function drawSolvedRubiksCube(dim) {
     const transparent = false;
     let numSides = 4;
 
-    let canvas = document.getElementById("rubiksCanvas");
+    let canvas = document.getElementById(dim + "x" + dim + "rubiksCanvas");
     let ctx = canvas.getContext("2d");
     ctx.strokeStyle = black;
 
@@ -116,7 +124,8 @@ function drawSolvedRubiksCube() {
         topY,
         bottomX,
         bottomY,
-        numSides
+        numSides,
+        dim
     );
     let topInnerX = innerCoords[0];
     let topInnerY = innerCoords[1];
@@ -148,19 +157,25 @@ function drawSolvedRubiksCube() {
 
     drawVerticalEdges(ctx, topX, topY, bottomX, bottomY, transparent, currIndex, numSides);
 
-    let indices = [prevIndex * 2, prevIndex * 2 + 1, currIndex * 2, currIndex * 2 + 1];
+    let indices = [];
+    for (let i = 0; i < dim - 1; i++) {
+        indices.push(prevIndex * (dim - 1) + i);
+    }
+    for (let i = 0; i < dim - 1; i++) {
+        indices.push(currIndex * (dim - 1) + i);
+    }
     drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomInnerY, indices);
 
     // Draw horizontal inner lines
     ctx.beginPath();
-    for (let i = 0; i < 2; i++) {
-        ctx.moveTo(midInnerX[prevIndex * 2 + i], midInnerY[prevIndex * 2 + i]);
-        ctx.lineTo(midInnerX[currIndex * 2 + i], midInnerY[currIndex * 2 + i]);
-        ctx.lineTo(midInnerX[nextIndex * 2 + i], midInnerY[nextIndex * 2 + i]);
+    for (let i = 0; i < dim - 1; i++) {
+        ctx.moveTo(midInnerX[prevIndex * (dim - 1) + i], midInnerY[prevIndex * (dim - 1) + i]);
+        ctx.lineTo(midInnerX[currIndex * (dim - 1) + i], midInnerY[currIndex * (dim - 1) + i]);
+        ctx.lineTo(midInnerX[nextIndex * (dim - 1) + i], midInnerY[nextIndex * (dim - 1) + i]);
     }
     ctx.stroke();
 
-    drawInnerTopLines(ctx, topInnerX, topInnerY);
+    drawInnerTopLines(ctx, topInnerX, topInnerY, numSides, dim);
 
     time += interval;
 }
@@ -168,6 +183,7 @@ function drawSolvedRubiksCube() {
 function drawPyraminx() {
     const transparent = false;
     let numSides = 3;
+    let dim = 3;
 
     let canvas = document.getElementById("pyraminxCanvas");
     let ctx = canvas.getContext("2d");
@@ -191,7 +207,8 @@ function drawPyraminx() {
         topY,
         bottomX,
         bottomY,
-        numSides
+        numSides,
+        dim
     );
 
     let midInnerX = innerCoords[2];

@@ -22,33 +22,37 @@ function fillSide(ctx, from, to, topX, topY, bottomX, bottomY, fillColor) {
 }
 
 // Draw inner lines of top face
-function drawInnerTopLines(ctx, topInnerX, topInnerY) {
+function drawInnerTopLines(ctx, topInnerX, topInnerY, numSides, dim) {
     ctx.lineWidth = 5;
     for (let i = 0; i < 4; i++) {
-        ctx.beginPath();
+        for (let j = 0; j < dim - 1; j++) {
+            ctx.beginPath();
 
-        let curr = i * 2;
-        let next = (i * 2 + 5) % 8;
+            let curr = i * (dim - 1) + j;
+            let next = (i * (dim - 1) + 3 * (dim - 1) - j - 1) % ((dim - 1) * numSides);
 
-        ctx.moveTo(topInnerX[curr], topInnerY[curr]);
-        ctx.lineTo(topInnerX[next], topInnerY[next]);
-        //ctx.strokeStyle = "#000000";
-        ctx.stroke();
+            ctx.moveTo(topInnerX[curr], topInnerY[curr]);
+            ctx.lineTo(topInnerX[next], topInnerY[next]);
+            //ctx.strokeStyle = "#000000";
+            ctx.stroke();
+        }
     }
 }
     
 // Draw inner lines of bottom face
-function drawInnerBottomLines(ctx, bottomInnerX, bottomInnerY) {
+function drawInnerBottomLines(ctx, bottomInnerX, bottomInnerY, numSides, dim) {
     ctx.lineWidth = 5;
     for (let i = 0; i < 4; i++) {
-        ctx.beginPath();
+        for (let j = 0; j < dim - 1; j++) {
+            ctx.beginPath();
 
-        let curr = i * 2;
-        let next = (i * 2 + 5) % 8;
+            let curr = i * (dim - 1) + j;
+            let next = (i * (dim - 1) + 3 * (dim - 1) - j - 1) % ((dim - 1) * numSides);
 
-        ctx.moveTo(bottomInnerX[curr], bottomInnerY[curr]);
-        ctx.lineTo(bottomInnerX[next], bottomInnerY[next]);
-        ctx.stroke();
+            ctx.moveTo(bottomInnerX[curr], bottomInnerY[curr]);
+            ctx.lineTo(bottomInnerX[next], bottomInnerY[next]);
+            ctx.stroke();
+        }
     }
 }
 
@@ -65,16 +69,14 @@ function drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomI
 }
 
 // Draw horizontal inner lines
-function drawInnerHorizontalLines(ctx, midInnerX, midInnerY, numSides) {
+function drawInnerHorizontalLines(ctx, midInnerX, midInnerY, numSides, dim) {
     ctx.beginPath();
     for (let i = 0; i < numSides; i++) {
-        let index = mod(i * 2 + 2, 2 * numSides);
-        ctx.moveTo(midInnerX[i * 2], midInnerY[i * 2]);
-        ctx.lineTo(midInnerX[index], midInnerY[index]);
-
-        index = mod(index + 1, 2 * numSides);
-        ctx.moveTo(midInnerX[i * 2 + 1], midInnerY[i * 2 + 1]);
-        ctx.lineTo(midInnerX[index], midInnerY[index]);
+        for (let j = 0; j < dim - 1; j++) {
+            let index = mod((i + 1) * (dim - 1), (dim - 1) * numSides);
+            ctx.moveTo(midInnerX[i * (dim - 1) + j], midInnerY[i * (dim - 1) + j]);
+            ctx.lineTo(midInnerX[index + j], midInnerY[index + j]);
+        }
     }
     ctx.stroke();
 }
