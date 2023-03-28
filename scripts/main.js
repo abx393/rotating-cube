@@ -11,6 +11,8 @@ const blue = "#0034FFBB";
 const orange = "#FF8C00EE";
 const yellow = "#FFFF00EE";
 
+let colors = [green, red, blue, orange];
+
 function main() {
     //ipStackQuery();
     draw();
@@ -39,6 +41,7 @@ function draw() {
     setInterval(drawSolvedRubiksCube, interval, 2);
     setInterval(drawSolvedRubiksCube, interval, 3);
     setInterval(drawSolvedRubiksCube, interval, 4);
+    setInterval(drawSolvedRubiksCube, interval, 7);
     setInterval(drawPyraminx, interval);
 }
 
@@ -99,8 +102,10 @@ function drawTransparentCube() {
 }
 
 function drawSolvedRubiksCube(dim) {
+
     const transparent = false;
     let numSides = 4;
+    colorsCurr = colors.slice(dim % numSides).concat(colors.slice(0, dim % numSides));
 
     let canvas = document.getElementById(dim + "x" + dim + "rubiksCanvas");
     let ctx = canvas.getContext("2d");
@@ -140,13 +145,11 @@ function drawSolvedRubiksCube(dim) {
     );
     let currIndex = mod(numSides - quad, numSides);
 
-    let colors = [green, red, blue, orange];
-
     let prevIndex = mod(currIndex - 1, numSides);
     let nextIndex = mod(currIndex + 1, numSides);
 
-    fillSide(ctx, currIndex, prevIndex, topX, topY, bottomX, bottomY, colors[currIndex]);
-    fillSide(ctx, currIndex, nextIndex, topX, topY, bottomX, bottomY, colors[nextIndex]);
+    fillSide(ctx, currIndex, prevIndex, topX, topY, bottomX, bottomY, colorsCurr[currIndex]);
+    fillSide(ctx, currIndex, nextIndex, topX, topY, bottomX, bottomY, colorsCurr[nextIndex]);
 
     // Draw edges of bottom layer of cube (line segments connecting top four corner points)
     drawBottomEdges(ctx, bottomX, bottomY, transparent, currIndex, numSides);
