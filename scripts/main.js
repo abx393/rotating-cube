@@ -1,5 +1,5 @@
 const interval = 5; // Sampling period
-const period = 10000; // Period of cube's rotation
+const period = 15000; // Period of cube's rotation
 let time = 0; // Current time
 
 const white = "#ffffffff";
