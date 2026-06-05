@@ -1,5 +1,5 @@
 // Returns (x, y) coordinates of each of the 4 top and 4 bottom corners of the cube
-function cornerCoordinates(width, height, numSides) {
+function cornerCoordinates(width, height, numSides, time, period) {
     let horizontalScale = width / 2;
     let verticalScale = height / 5;
     let verticalOffset = verticalScale;
