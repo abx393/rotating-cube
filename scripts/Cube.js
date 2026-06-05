@@ -10,7 +10,7 @@ class RotatingCube {
    * @param {number} period - Duration of one full rotation in milliseconds (default: 15000)
    * @param {number} interval - Redraw interval in milliseconds (default: 5)
    */
-  constructor(canvasId, numSides, dim, period = 15000, interval = 5) {
+  constructor(canvasId, numSides, dim, period = 5000, interval = 5) {
     this.canvas = document.getElementById(canvasId);
     if (!this.canvas) {
       console.error(`Canvas with id "${canvasId}" not found`);
@@ -93,7 +93,7 @@ class RotatingCube {
  * RubiksCube class - Renders Rubik's cubes of various dimensions
  */
 class RubiksCube extends RotatingCube {
-  constructor(canvasId, dim, period = 15000, interval = 5) {
+  constructor(canvasId, dim, period = 5000, interval = 5) {
     super(canvasId, 4, dim, period, interval);
   }
 
@@ -141,10 +141,9 @@ class RubiksCube extends RotatingCube {
 
     let timeModified = Math.max(0, this.time - this.period / 8);
     let quad = Math.ceil(
-      ((timeModified / this.period -
+      (timeModified / this.period -
         Math.floor(timeModified / this.period)) *
-        this.numSides) %
-        1
+        this.numSides
     );
     let currIndex = this.mod(this.numSides - quad, this.numSides);
 
@@ -241,7 +240,7 @@ class RubiksCube extends RotatingCube {
  * Pyraminx class - Renders triangular pyramid
  */
 class Pyraminx extends RotatingCube {
-  constructor(canvasId, period = 15000, interval = 5) {
+  constructor(canvasId, period = 5000, interval = 5) {
     super(canvasId, 3, 3, period, interval);
   }
 
