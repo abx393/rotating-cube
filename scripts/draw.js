@@ -153,8 +153,3 @@ function drawVerticalEdges(ctx, topX, topY, bottomX, bottomY, transparent, index
     }
     
 }
-
-// modulus function for negative x
-function mod(x, y) {
-    return (x + y) % y;
-}
