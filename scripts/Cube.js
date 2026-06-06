@@ -295,8 +295,7 @@ class Pyraminx extends RotatingCube {
     let triad = Math.ceil(
       ((timeModified / this.period -
         Math.floor(timeModified / this.period)) *
-        this.numSides) %
-        1
+        this.numSides)
     );
     let currIndex = this.mod(this.numSides - triad, this.numSides);
 
