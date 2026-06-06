@@ -110,17 +110,13 @@ class RubiksCube extends RotatingCube {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     // Retrieve coordinates of all 8 corners of the cube
-    let cornerCoords = cornerCoordinates(
+    const { topX, topY, bottomX, bottomY } = cornerCoordinates(
       this.canvas.width,
       this.canvas.height,
       this.numSides,
       this.time,
       this.period
     );
-    let topX = cornerCoords[0];
-    let topY = cornerCoords[1];
-    let bottomX = cornerCoords[2];
-    let bottomY = cornerCoords[3];
 
     // Retrieve coordinates of inner points on each edge
     let innerCoords = innerCoordinates(
@@ -257,22 +253,18 @@ class Pyraminx extends RotatingCube {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Retrieve corner coordinates
-    let cornerCoords = cornerCoordinates(
+    const { topX, topY, bottomX, bottomY } = cornerCoordinates(
       canvas.width,
       canvas.height,
       this.numSides,
       this.time,
       this.period
     );
-    let bottomX = cornerCoords[2];
-    let bottomY = cornerCoords[3];
-    let topX = [
-      canvas.width / 2,
-      canvas.width / 2,
-      canvas.width / 2,
-      canvas.width / 2,
-    ];
-    let topY = [0, 0, 0, 0];
+    // Pyraminx apex: all top vertices converge to a single peak
+    for (let i = 0; i < topX.length; i++) {
+      topX[i] = canvas.width / 2;
+      topY[i] = 0;
+    }
 
     // Retrieve inner coordinates
     let innerCoords = innerCoordinates(
