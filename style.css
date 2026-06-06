@@ -1,49 +1,85 @@
 body {
-    background-color: #131313;
-    margin: 200px 200px 200px 200px;
+  background-color: #131313;
+  margin: 4rem 0;
+  padding: 0;
+}
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 h1, h2, h3 {
-    font-family: sans-serif;
-    color: #DFDFDF;
+  font-family: sans-serif;
+  color: #DFDFDF;
 }
 
-button#drawBtn {
-    background-color: bisque;
-    width: 200px;
-    height: 60px;
-    font-family: sans-serif;
-    font-size: 20px;
-    margin-left: 200px;
-    display: none;
-    color: #989898;
+h1 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+main > section:first-of-type h1 {
+  margin-top: 0;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
 }
 
 p {
-    font-family: sans-serif;
-    font-size: 18px;
-    color: #DFDFDF;
+  font-family: sans-serif;
+  font-size: 18px;
+  color: #DFDFDF;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
 }
 
-.cube {
-    display: block;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 20px;
-    margin-right: 20px;
+a {
+  color: #8eb4ff;
+}
+
+.entry {
+  margin-bottom: 2rem;
+}
+
+.social-links {
+  margin-top: 1.5rem;
 }
 
 .fa {
-    padding: 10px 10px 0px 10px;
-    font-size: 50px;
-    text-align: center;
-    margin-right: 40px;
-    color: #ffffff99;
-    text-decoration: none;
-    height: 50px;
-    width: 50px;
+  padding: 10px 10px 0 10px;
+  font-size: 50px;
+  text-align: center;
+  margin-right: 40px;
+  color: #ffffff99;
+  text-decoration: none;
+  height: 50px;
+  width: 50px;
 }
 
-.fa:hover{
-    opacity: 0.7;
+.fa:hover {
+  opacity: 0.7;
+}
+
+.puzzle-scroll {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.puzzle-collection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  gap: 1.5rem;
+  width: max-content;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.cube {
+  display: block;
+  flex: 0 0 auto;
 }
