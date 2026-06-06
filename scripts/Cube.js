@@ -75,13 +75,6 @@ class RotatingCube {
   }
 
   /**
-   * Utility: modulus function for negative x
-   */
-  mod(x, y) {
-    return mod(x, y);
-  }
-
-  /**
    * Update time state
    */
   updateTime() {
@@ -142,10 +135,10 @@ class RubiksCube extends RotatingCube {
         Math.floor(timeModified / this.period)) *
         this.numSides
     );
-    let currIndex = this.mod(this.numSides - quad, this.numSides);
+    let currIndex = mod(this.numSides - quad, this.numSides);
 
-    let prevIndex = this.mod(currIndex - 1, this.numSides);
-    let nextIndex = this.mod(currIndex + 1, this.numSides);
+    let prevIndex = mod(currIndex - 1, this.numSides);
+    let nextIndex = mod(currIndex + 1, this.numSides);
 
     fillSide(
       this.ctx,
@@ -289,12 +282,12 @@ class Pyraminx extends RotatingCube {
         Math.floor(timeModified / this.period)) *
         this.numSides)
     );
-    let currIndex = this.mod(this.numSides - triad, this.numSides);
+    let currIndex = mod(this.numSides - triad, this.numSides);
 
     let colors = [this.yellow, this.red, this.blue];
 
-    let prevIndex = this.mod(currIndex - 1, this.numSides);
-    let nextIndex = this.mod(currIndex + 1, this.numSides);
+    let prevIndex = mod(currIndex - 1, this.numSides);
+    let nextIndex = mod(currIndex + 1, this.numSides);
 
     if (bottomX[prevIndex] > bottomX[currIndex]) {
       fillSide(
