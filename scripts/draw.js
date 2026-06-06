@@ -23,7 +23,7 @@ function fillSide(ctx, from, to, topX, topY, bottomX, bottomY, fillColor) {
 
 // Draw inner lines of top face
 function drawInnerTopLines(ctx, topInnerX, topInnerY, numSides, dim) {
-    ctx.lineWidth = 5;
+    ctx.lineWidth = CONFIG.canvas.lineWidth;
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < dim - 1; j++) {
             ctx.beginPath();
@@ -41,7 +41,7 @@ function drawInnerTopLines(ctx, topInnerX, topInnerY, numSides, dim) {
     
 // Draw inner lines of bottom face
 function drawInnerBottomLines(ctx, bottomInnerX, bottomInnerY, numSides, dim) {
-    ctx.lineWidth = 5;
+    ctx.lineWidth = CONFIG.canvas.lineWidth;
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < dim - 1; j++) {
             ctx.beginPath();
@@ -58,7 +58,7 @@ function drawInnerBottomLines(ctx, bottomInnerX, bottomInnerY, numSides, dim) {
 
 // Draw vertical inner lines
 function drawInnerVerticalLines(ctx, topInnerX, topInnerY, bottomInnerX, bottomInnerY, indices) {
-    ctx.lineWidth = 5;
+    ctx.lineWidth = CONFIG.canvas.lineWidth;
     for (let i = 0; i < indices.length; i++) {
         let index = indices[i];
         ctx.beginPath();
@@ -90,7 +90,7 @@ function drawEdges(ctx, topX, topY, bottomX, bottomY, numSides) {
 
 // Draw top edges
 function drawTopEdges(ctx, topX, topY, numSides) {
-    ctx.lineWidth = 5;
+    ctx.lineWidth = CONFIG.canvas.lineWidth;
     for (let i = 0; i < numSides; i++) {
         ctx.beginPath();
         ctx.moveTo(topX[i], topY[i]);
@@ -120,7 +120,7 @@ function drawBottomEdges(ctx, bottomX, bottomY, transparent, index, numSides) {
 
 // Draw vertical edges
 function drawVerticalEdges(ctx, topX, topY, bottomX, bottomY, transparent, index, numSides) {
-    ctx.lineWidth = 5;
+    ctx.lineWidth = CONFIG.canvas.lineWidth;
     let i = mod(index - 1, numSides);
     let j = index;
     let k = mod(index + 1, numSides);
