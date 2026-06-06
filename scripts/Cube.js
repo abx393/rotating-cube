@@ -7,10 +7,10 @@ class RotatingCube {
    * @param {string} canvasId - ID of canvas element to render on
    * @param {number} numSides - Number of sides (4 for cube, 3 for pyramid)
    * @param {number} dim - Dimension of cube (2, 3, 4, 7, etc.)
-   * @param {number} period - Duration of one full rotation in milliseconds (default: 15000)
-   * @param {number} interval - Redraw interval in milliseconds (default: 5)
+   * @param {number} period - Duration of one full rotation in milliseconds (default: from CONFIG)
+   * @param {number} interval - Redraw interval in milliseconds (default: from CONFIG)
    */
-  constructor(canvasId, numSides, dim, period = 5000, interval = 5) {
+  constructor(canvasId, numSides, dim, period = CONFIG.animation.period, interval = CONFIG.animation.interval) {
     this.canvas = document.getElementById(canvasId);
     if (!this.canvas) {
       console.error(`Canvas with id "${canvasId}" not found`);
@@ -26,15 +26,15 @@ class RotatingCube {
     this.intervalId = null;
     this.isRunning = false;
 
-    // Color constants specific to this cube instance
-    this.white = "#ffffffff";
-    this.black = "#000000";
-    this.creamWhite = "#FCFBF4EE";
-    this.green = "#11FF3499";
-    this.red = "#FF3333BB";
-    this.blue = "#0034FFBB";
-    this.orange = "#FF8C00EE";
-    this.yellow = "#FFFF00EE";
+    // Color constants from global CONFIG
+    this.white = CONFIG.colors.white;
+    this.black = CONFIG.colors.black;
+    this.creamWhite = CONFIG.colors.creamWhite;
+    this.green = CONFIG.colors.green;
+    this.red = CONFIG.colors.red;
+    this.blue = CONFIG.colors.blue;
+    this.orange = CONFIG.colors.orange;
+    this.yellow = CONFIG.colors.yellow;
 
     this.colors = [this.green, this.red, this.blue, this.orange];
   }
@@ -75,13 +75,6 @@ class RotatingCube {
   }
 
   /**
-   * Utility: modulus function for negative x
-   */
-  mod(x, y) {
-    return (x + y) % y;
-  }
-
-  /**
    * Update time state
    */
   updateTime() {
@@ -93,7 +86,7 @@ class RotatingCube {
  * RubiksCube class - Renders Rubik's cubes of various dimensions
  */
 class RubiksCube extends RotatingCube {
-  constructor(canvasId, dim, period = 5000, interval = 5) {
+  constructor(canvasId, dim, period = CONFIG.animation.period, interval = CONFIG.animation.interval) {
     super(canvasId, 4, dim, period, interval);
   }
 
@@ -104,22 +97,19 @@ class RubiksCube extends RotatingCube {
       .concat(this.colors.slice(0, this.dim % this.numSides));
 
     this.ctx.strokeStyle = this.black;
+    this.ctx.lineWidth = CONFIG.canvas.lineWidth;
 
     // Reset canvas
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     // Retrieve coordinates of all 8 corners of the cube
-    let cornerCoords = cornerCoordinates(
+    const { topX, topY, bottomX, bottomY } = cornerCoordinates(
       this.canvas.width,
       this.canvas.height,
       this.numSides,
       this.time,
       this.period
     );
-    let topX = cornerCoords[0];
-    let topY = cornerCoords[1];
-    let bottomX = cornerCoords[2];
-    let bottomY = cornerCoords[3];
 
     // Retrieve coordinates of inner points on each edge
     let innerCoords = innerCoordinates(
@@ -145,10 +135,10 @@ class RubiksCube extends RotatingCube {
         Math.floor(timeModified / this.period)) *
         this.numSides
     );
-    let currIndex = this.mod(this.numSides - quad, this.numSides);
+    let currIndex = mod(this.numSides - quad, this.numSides);
 
-    let prevIndex = this.mod(currIndex - 1, this.numSides);
-    let nextIndex = this.mod(currIndex + 1, this.numSides);
+    let prevIndex = mod(currIndex - 1, this.numSides);
+    let nextIndex = mod(currIndex + 1, this.numSides);
 
     fillSide(
       this.ctx,
@@ -240,7 +230,7 @@ class RubiksCube extends RotatingCube {
  * Pyraminx class - Renders triangular pyramid
  */
 class Pyraminx extends RotatingCube {
-  constructor(canvasId, period = 5000, interval = 5) {
+  constructor(canvasId, period = CONFIG.animation.period, interval = CONFIG.animation.interval) {
     super(canvasId, 3, 3, period, interval);
   }
 
@@ -250,27 +240,24 @@ class Pyraminx extends RotatingCube {
     let canvas = this.canvas;
     let ctx = this.ctx;
     ctx.strokeStyle = this.black;
+    ctx.lineWidth = CONFIG.canvas.lineWidth;
 
     // Reset canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Retrieve corner coordinates
-    let cornerCoords = cornerCoordinates(
+    const { topX, topY, bottomX, bottomY } = cornerCoordinates(
       canvas.width,
       canvas.height,
       this.numSides,
       this.time,
       this.period
     );
-    let bottomX = cornerCoords[2];
-    let bottomY = cornerCoords[3];
-    let topX = [
-      canvas.width / 2,
-      canvas.width / 2,
-      canvas.width / 2,
-      canvas.width / 2,
-    ];
-    let topY = [0, 0, 0, 0];
+    // Pyraminx apex: all top vertices converge to a single peak
+    for (let i = 0; i < topX.length; i++) {
+      topX[i] = canvas.width / 2;
+      topY[i] = 0;
+    }
 
     // Retrieve inner coordinates
     let innerCoords = innerCoordinates(
@@ -293,15 +280,14 @@ class Pyraminx extends RotatingCube {
     let triad = Math.ceil(
       ((timeModified / this.period -
         Math.floor(timeModified / this.period)) *
-        this.numSides) %
-        1
+        this.numSides)
     );
-    let currIndex = this.mod(this.numSides - triad, this.numSides);
+    let currIndex = mod(this.numSides - triad, this.numSides);
 
     let colors = [this.yellow, this.red, this.blue];
 
-    let prevIndex = this.mod(currIndex - 1, this.numSides);
-    let nextIndex = this.mod(currIndex + 1, this.numSides);
+    let prevIndex = mod(currIndex - 1, this.numSides);
+    let nextIndex = mod(currIndex + 1, this.numSides);
 
     if (bottomX[prevIndex] > bottomX[currIndex]) {
       fillSide(

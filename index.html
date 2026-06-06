@@ -1,122 +1,104 @@
-<!DOCTYPE html> 
-<html>
-    
+<!DOCTYPE html>
+<html lang="en">
   <head>
-      
-    <!-- Loading font-awesome icons -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav Bandari</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      
-    <link rel = "stylesheet" href = "style.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
 
-   </head>
-    
   <body>
-    <button id = "drawBtn" >Start</button>
-    <h1 id="about-me-h1">About me</h1>
+    <main class="content">
+      <section id="about-me">
+        <h1>About me</h1>
+        <p>Hello! I'm Abhinav Bandari, a senior studying computer science at the University of Washington's Paul Allen School of Computer Science and Engineering.</p>
+        <p>I've worked on computer science research, contributed to open source projects, worked on independent projects, and participated in hackathons. See more below!</p>
 
-    <p>Hello! I'm Abhinav Bandari, a senior studying computer science at the University of Washington's Paul Allen School of Computer Science and Engineering. </p>
-    <p>I've worked on computer science research, contributed to open source projects, worked on independent projects, and participated in hackathons. See more below! </p>
-    </br>
+        <div class="social-links">
+          <a class="fa fa-github" href="https://www.github.com/abx393" target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
+          <a class="fa fa-linkedin" href="https://www.linkedin.com/in/abhinavbandari" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
+          <a class="fa fa-envelope-square" href="mailto:abandari@cs.washington.edu" aria-label="Email"></a>
+        </div>
+      </section>
 
-    <a class="fa fa-github" href="https://www.github.com/abx393" target="_blank"></a>
-    <a class="fa fa-linkedin" href="https://www.linkedin.com/in/abhinavbandari" target="_blank"></a>
-    <a class="fa fa-envelope-square" href="mailto://abandari@cs.washington.edu"></a>
+      <section id="experience">
+        <h1>Work Experience</h1>
 
-    <h1 id="experience-h1">Work Experience</h1>
-    </br>
-    <div>
-      <h2>Software Engineer Intern, Arista Networks</h2>
-      <p>Developed and shipped feature to efficiently store and query IPv6
-      addresses in radix tree map.</p>
-      <p>Built anomaly and outlier detection algorithms for round-trip time
-      of packets sent over the network, using Elasticsearch and Kibana.</p>
-    </div>
-    </br>
+        <div class="entry">
+          <h2>Software Engineer Intern, Arista Networks</h2>
+          <p>Developed and shipped feature to efficiently store and query IPv6 addresses in radix tree map.</p>
+          <p>Built anomaly and outlier detection algorithms for round-trip time of packets sent over the network, using Elasticsearch and Kibana.</p>
+        </div>
 
-    <div>
-      <h2>Software Engineer Intern, 98point6</h2>
-      <p>Developed automated operations dashboard for Platform Engineering
-      team using AWS CDK.</p>
-      <p>Integrated metrics from Splunk Infrastructure Monitoring and AWS
-      CloudWatch, Support, and Health services.</p>
-      <p>Developed Tableau Web Data Connectors using AWS SDK, REST APIs to
-      automatically pull metrics data.</p>
-    </div>
-    </br>
+        <div class="entry">
+          <h2>Software Engineer Intern, 98point6</h2>
+          <p>Developed automated operations dashboard for Platform Engineering team using AWS CDK.</p>
+          <p>Integrated metrics from Splunk Infrastructure Monitoring and AWS CloudWatch, Support, and Health services.</p>
+          <p>Developed Tableau Web Data Connectors using AWS SDK, REST APIs to automatically pull metrics data.</p>
+        </div>
 
+        <div class="entry">
+          <h2>Research Assistant, Ubiquitous Computing Laboratory, University of Washington-Seattle</h2>
+          <p>Developed non-contact acoustic sensing algorithm to detect and identify a user's exercise through their smartphone with 83.0% accuracy.</p>
+          <p>Implemented ultrasound sensing through phone's speaker and microphone, used Fourier analysis to develop audio spectrograms for each exercise, and trained deep neural networks to analyze the spectrogram images and identify the performed exercise.</p>
+          <p>Worked with graduate and undergraduate student researchers; advised by Dr. Shwetak Patel.</p>
+        </div>
 
-    <div>
-      <h2>Research Assistant, Ubiquitous Computing Laboratory, University of Washington-Seattle</h2>
-      <p>Developed non-contact acoustic sensing algorithm to detect and identify a user's exercise through their smartphone with 83.0% accuracy.</p>
-      <p>Implemented ultrasound sensing through phone's speaker and microphone, used Fourier analysis to develop audio spectrograms
-        for each exericse, and trained deep neural networks to analyze the spectrogram images and identify the performed exercise. </p>
-      <p>Worked with graduate and undergraduate student researchers; advised by Dr. Shwetak Patel. </p>
-    </div>
-    </br>
+        <div class="entry">
+          <h2>Instructor, Coding with Kids</h2>
+          <p>Taught weekly after-school classes to elementary school students in Scratch and Python programming languages.</p>
+          <p>Worked with another instructor to teach provided curriculum and adapt lessons as necessary.</p>
+        </div>
+      </section>
 
-    <div>
-      <h2>Instructor, Coding with Kids</h2>
-      <p>Taught weekly after-school classes to elementary school students in Scratch and Python programming languages.</p>
-      <p>Worked with another instructor to teach provided curriculum and adapt lessons as necessary.</p>
-    </div>
-    </br>
+      <section id="projects">
+        <h1>Projects</h1>
 
-    <h1 id="projects-h1">Projects</h1>
-    </br>
-    <div>
-      <h2>DawgMaps</h2>
-      <p>Developed Android application and React web app to crowdsource anonymous user location data.</p>
-      <p>App displays real-time heatmap visualization of crowd density, overlayed on a Google Maps interface.</p>
-      <p>In the COVID-19 era, users will benefit from having real-time information on which locations are
-        safe to visit.</p>
-      <p>Built during UW Hack'20 hackathon in a team of four members; finished top 3 out of 81 projects.</p>
-      <p>View source code <a href="//www.github.com/abhaybd/DawgMaps">here</a>.</p>
-    </div>
-    </br>
+        <div class="entry">
+          <h2>DawgMaps</h2>
+          <p>Developed Android application and React web app to crowdsource anonymous user location data.</p>
+          <p>App displays real-time heatmap visualization of crowd density, overlayed on a Google Maps interface.</p>
+          <p>In the COVID-19 era, users will benefit from having real-time information on which locations are safe to visit.</p>
+          <p>Built during UW Hack'20 hackathon in a team of four members; finished top 3 out of 81 projects.</p>
+          <p>View source code <a href="https://www.github.com/abhaybd/DawgMaps">here</a>.</p>
+        </div>
 
-    <div>
-      <h2>Libra</h2>
-      <p>Contributed to open-source automatic machine learning (autoML) library that automates machine learning
-        preprocessing, model building, training, and evaluation.</p>
-      <p>Personal contributions: Developed backend for image classification (convolutional neural networks) and
-        artificial image generation (generative adversarial networks) queries. </p>
-      <p>Library has over 17,000 downloads. View source code <a href="//www.github.com/palashio/libra">here</a></p>
-    </div>
-    </br>
+        <div class="entry">
+          <h2>Libra</h2>
+          <p>Contributed to open-source automatic machine learning (autoML) library that automates machine learning preprocessing, model building, training, and evaluation.</p>
+          <p>Personal contributions: Developed backend for image classification (convolutional neural networks) and artificial image generation (generative adversarial networks) queries.</p>
+          <p>Library has over 17,000 downloads. View source code <a href="https://www.github.com/palashio/libra">here</a>.</p>
+        </div>
 
-    <div>
-      <h2>PneumoNet</h2>
-      <p>Developed deep learning classification algorithm to take a chest X-ray image as input and output
-        a diagnosis for four heart and lung conditions (pneumonia, pneumothorax, cardiomegaly, pulmonary
-        edema) </p>
-      <p>Developed image classification algorithm using dataset of chest X-rays released by the National Institutes of Health.</p>
-      <p>The algorithm's performance was comparable to performance of state-of-the-art algorithms on this dataset.</p>
-    </div>
-    </br>
+        <div class="entry">
+          <h2>PneumoNet</h2>
+          <p>Developed deep learning classification algorithm to take a chest X-ray image as input and output a diagnosis for four heart and lung conditions (pneumonia, pneumothorax, cardiomegaly, pulmonary edema).</p>
+          <p>Developed image classification algorithm using dataset of chest X-rays released by the National Institutes of Health.</p>
+          <p>The algorithm's performance was comparable to performance of state-of-the-art algorithms on this dataset.</p>
+        </div>
+      </section>
+    </main>
 
-    <h1 id="puzzles-h1">Puzzle Collection</h1>
-    <div style="width: 100%;">
-      <div style="margin-left:0px; float:left; width:250px;">
-        <canvas class="cube" id = "2x2rubiksCanvas" width = "150" height = "150"></canvas>
+    <section id="puzzles">
+      <div class="content">
+        <h1>Puzzle Collection</h1>
       </div>
-      <div style="margin-left:0px; float:left; width:250px;">
-        <canvas class="cube" id = "3x3rubiksCanvas" width = "200" height = "200"></canvas>
+      <div class="puzzle-scroll">
+        <div class="puzzle-collection">
+          <canvas class="cube" id="2x2rubiksCanvas" width="150" height="150"></canvas>
+          <canvas class="cube" id="3x3rubiksCanvas" width="200" height="200"></canvas>
+          <canvas class="cube" id="4x4rubiksCanvas" width="250" height="250"></canvas>
+          <canvas class="cube" id="7x7rubiksCanvas" width="300" height="300"></canvas>
+          <canvas class="cube" id="pyraminxCanvas" width="200" height="200"></canvas>
+        </div>
       </div>
-      <div style="margin-left:50px; float:left; width:250px;">
-        <canvas class="cube" id = "4x4rubiksCanvas" width = "250" height = "250"></canvas>
-      </div>
-      <div style="margin-left:100px; float:left; width:250px;">
-        <canvas class="cube" id = "7x7rubiksCanvas" width = "300" height = "300"></canvas>
-      </div>
-      <div style="margin-left:0px; float:left; width:250px;">
-        <canvas class="cube" id="pyraminxCanvas" width="200" height="200"></canvas>
-      </div>
-    </div>
+    </section>
 
-    <script src = "scripts/coordinates.js"></script>
-    <script src = "scripts/draw.js"></script>
-    <script src = "scripts/Cube.js"></script>
-    <script src = "scripts/main.js"></script>
-
+    <script src="scripts/coordinates.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/draw.js"></script>
+    <script src="scripts/Cube.js"></script>
+    <script src="scripts/main.js"></script>
   </body>
 </html>

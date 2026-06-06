@@ -1,4 +1,4 @@
-// Returns (x, y) coordinates of each of the 4 top and 4 bottom corners of the cube
+// Returns { topX, topY, bottomX, bottomY } for each corner of the top and bottom layers
 function cornerCoordinates(width, height, numSides, time, period) {
     let horizontalScale = width / 2;
     let verticalScale = height / 5;
@@ -20,12 +20,7 @@ function cornerCoordinates(width, height, numSides, time, period) {
         
     }
     
-    let coords = [];
-    coords.push(topX);
-    coords.push(topY);
-    coords.push(bottomX);
-    coords.push(bottomY);
-    return coords;
+    return { topX, topY, bottomX, bottomY };
 }
 
 // Compute (x, y) coordinates of inner points of top, middle, and bottom layer
